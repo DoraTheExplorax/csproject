@@ -1,16 +1,16 @@
-from flask_sqlalchemy import SQLAlchemy
-from flask import Flask
-from database.py import db
-class users(db.Model):
-    id = db.Column('user_id', db.Integer, primary_key = True)
-    name = db.Column(db.String(100))
-    email = db.Column(db.String(50))
-    password = db.Column(db.String(50))
-    number = db.Column(db.Integer())
-    address = db.Column(db.String(200))
-    def __init__(self, name, email, password, number, address):
-       self.name = name
-       self.email = email
-       self.password = password
-       self.number = number
-       self.address = address
+import mysql.connector
+
+class DB:
+    def add_users(self, Lname,Fname,Add,Pass,ContactNumber,EmailId):
+        conn = mysql.connector.connect(user='root',password='root',host='localhost',port='3306',database='ardinam')
+        cursor = conn.cursor()
+        query="INSERT INTO Users(LastName,FirstName,Address,Pass,ContactNumber,EmailId) VALUES ('{}','{}','{}','{}','{}','{}')".format(Lname,Fname,Add,Pass,ContactNumber,EmailId)
+        cursor.execute(query)
+        conn.commit()
+    def fetch_data(self,query):
+        conn = mysql.connector.connect(user='root',password='root',host='localhost',port='3306',database='ardinam')
+        cursor = conn.cursor()
+        cursor.execute(query)
+        results = cursor.fetchall()
+        return  results
+
