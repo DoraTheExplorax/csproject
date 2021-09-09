@@ -14,5 +14,3 @@ class DB:
         results = cursor.fetchall()
         return  results
 
-db=DB()
-print(db.fetch_users(EmailId='98shim@gmail.com',Pass='root'))
