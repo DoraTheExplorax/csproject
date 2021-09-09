@@ -271,9 +271,10 @@ button {
 <body>
   <div class=e2_5>
     <div class=e21_12>
+      <form name="signup" action="{{url_for('home')}}" method = "POST">
       <div class=e8_15>
         <div class=e20_10>
-          <form name="signup" action="/" method = "POST">
+
 
 
           <div class="e8_13"></div><label for='fname'><input type="text" id="fname" name="fname" class="e8_13"></label>
@@ -303,9 +304,10 @@ button {
         <label for='address3'><input type="text" id="address3" name="address3" class="e8_25"></label>
         <span  class="e8_29">address</span>
       </div>
+
       <div class=e8_26>
-        <button type="submit" form="signup" value="Submit" class="e8_27"><div class="e8_27"></div><span  class="e8_28">submit</span></button>
-      </div>
+        <div class="e8_27"></div><span  class="e8_28">submit</span><input type="submit" name="submit" class = "e8_28" style="opacity:0">
+      </div></form>
     </div><span  class="e8_37">Sign Up</span>
   </div>
 </body>
