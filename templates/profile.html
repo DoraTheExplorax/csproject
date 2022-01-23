@@ -1,0 +1,177 @@
+<html>
+    <style>
+body {
+    overflow:hidden;
+}
+.e2_8 { 
+	overflow:hidden;
+}
+.e2_8 { 
+	background-color:rgba(240.12499898672104, 92.04791754484177, 92.04791754484177, 1);
+	width:100%;
+	height:100%;	
+}
+.e9_50 { 
+	color:rgba(255, 255, 255, 1);
+	width:814px;
+	height:157px;
+	position:absolute;
+	left:544px;
+	top:17px;
+	font-family:Product Sans;
+	text-align:center;
+	font-size:72px;
+	letter-spacing:0;
+	line-height:px;
+}
+.e29_6 { 
+	color:rgba(255, 255, 255, 1);
+	width:814px;
+	height:157px;
+	position:absolute;
+	left:544px;
+	top:160px;
+	font-family:Product Sans;
+	text-align:center;
+	font-size:72px;
+	letter-spacing:0;
+	line-height:px;
+}
+.e29_7 { 
+	color:rgba(255, 255, 255, 1);
+	width:814px;
+	height:157px;
+	position:absolute;
+	left:546px;
+	top:266px;
+	font-family:Product Sans;
+	text-align:center;
+	font-size:72px;
+	letter-spacing:0;
+	line-height:px;
+}
+.e29_8 { 
+	color:rgba(255, 255, 255, 1);
+	width:814px;
+	height:157px;
+	position:absolute;
+	left:546px;
+	top:374px;
+	font-family:Product Sans;
+	text-align:center;
+	font-size:72px;
+	letter-spacing:0;
+	line-height:px;
+}
+.e29_3 { 
+	background-color:rgba(255, 135.8837789297104, 135.8837789297104, 1);
+	width:819px;
+	height:71px;
+	position:absolute;
+	left:541px;
+	top:532px;
+	border-radius:42px;
+}
+.e29_4 { 
+	background-color:rgba(255, 135.8837789297104, 135.8837789297104, 1);
+	width:819px;
+	height:71px;
+	position:absolute;
+	left:539px;
+	top:661px;
+	border-radius:42px;
+}
+.e29_5 { 
+	background-color:rgba(255, 135.8837789297104, 135.8837789297104, 1);
+	width:819px;
+	height:71px;
+	position:absolute;
+	left:539px;
+	top:790px;
+	border-radius:42px;
+}
+.e7_6 {
+  	color:rgba(255, 230.5625081062317, 230.5625081062317, 1);
+  	width:168px;
+  	height:55px;
+  	position:absolute;
+  	left:1667px;
+  	top:44px;
+  	font-family:Product Sans;
+  	text-align:center;
+  	font-size:36px;
+  	letter-spacing:0;
+  	line-height:px;
+  }
+  .e7_7 {
+  	color:rgba(255, 230.5625081062317, 230.5625081062317, 1);
+  	width:168px;
+  	height:55px;
+  	position:absolute;
+  	left:1429px;
+  	top:47px;
+  	font-family:Product Sans;
+  	text-align:center;
+  	font-size:36px;
+  	letter-spacing:0;
+  	line-height:px;
+  }
+  .e7_11 {
+  	color:rgba(255, 230.5625081062317, 230.5625081062317, 1);
+  	width:168px;
+  	height:55px;
+  	position:absolute;
+  	left:1195px;
+  	top:50px;
+  	font-family:Product Sans;
+  	text-align:center;
+  	font-size:32px;
+  	letter-spacing:0;
+  	line-height:px;
+  }
+  .e7_4 {
+  	background-color:rgba(255, 135.8837789297104, 135.8837789297104, 1);
+  	width:202px;
+  	height:71px;
+  	position:absolute;
+  	left:1647px;
+  	top:34px;
+  	border-radius:42px;
+  }
+  .e7_10 {
+  	background-color:rgba(255, 135.8837789297104, 135.8837789297104, 1);
+  	width:202px;
+  	height:71px;
+  	position:absolute;
+  	left:1177px;
+  	top:34px;
+  	border-radius:42px;
+  }
+  .e7_2 {
+  	background-color:rgba(255, 135.8837789297104, 135.8837789297104, 1);
+  	width:202px;
+  	height:71px;
+  	position:absolute;
+  	left:1412px;
+  	top:34px;
+  	border-top-left-radius:42px;
+  	border-top-right-radius:42px;
+  	border-bottom-left-radius:42px;
+  	border-bottom-right-radius:42px;
+  }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Product+Sans&display=swap" rel="stylesheet">
+    <body>
+<div class=e2_8><span  class="e9_50">Profile</span><span  class="e29_6" style="font-size: 150%;">{{current_user.firstname}}</span><span  class="e29_7" style="font-size: 150%;top: 200px;">{{current_user.email}}</span><span  class="e29_8" style="font-size: 150%;top: 240px;" >{{current_user.contactnumber}}</span>
+    <div class="e29_3"></div>
+    <div class="e29_4"></div>
+    <div class="e29_5"></div>
+    <div class="e7_2"></div>
+    <div class="e7_4"></div>
+    <div class="e7_10"></div>
+    <a href ="{{url_for('logout')}}"><span  class="e7_6">log out</span><button type="submit" class="e7_6" style="opacity: 0"><span  class="e7_6">log in</span></button></a>
+    <a href ="{{url_for('submitbooks')}}"><span  class="e7_7" style="font-size: 180%;">submit books</span><button type="submit" class="e7_7" style="opacity: 0"><span  class="e7_7">sign up</span></button></a>
+    <a href ="{{url_for('availablebooks')}}"><span  class="e7_11" style="font-size: 155%;">available books</span><button type="submit" class="e7_11" style="opacity: 0"><span  class="e7_7">sign up</span></button></a>
+  </div>
+</body>
+</html>

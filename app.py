@@ -1,29 +1,96 @@
-from db import DB
-from flask import Flask, render_template, request
+from flask import Flask,render_template,request,redirect
+from flask_login import login_required, current_user, login_user, logout_user
+from models import UserModel, BookModel, db, load_books,login
+ 
 app = Flask(__name__)
-db=DB()
+app.secret_key = 'xyz'
+ 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+ 
+ 
+db.init_app(app)
+login.init_app(app)
+login.login_view = 'login'
+ 
+@app.before_first_request
+def create_all():
+    db.create_all()
 
-@app.route('/', methods=['GET','POST'])
-def home():
-   if request.method=="POST":
-      fname = request.form['fname']
-      lname = request.form['lname']
-      email = request.form['email']
-      number = request.form['number']
-      password = request.form['password']
-      address1 = request.form['address1']
-      address2 = request.form['address2']
-      address3 = request.form['address3']
-      address = address1+' '+address2+' '+address3
-      db.add_users(Lname=lname,Fname=fname,Add=address,Pass=password,ContactNumber=number,EmailId=email)
-   return render_template('index.html')
+@app.route('/')
+def landing():
+    return render_template('index.html')
 
-@app.route('/login', methods=['POST'])
+@app.route('/available')
+def availablebooks():
+    data = load_books()
+    for i in range(len(data)):
+        print(data[i].book1, data[i].name, data[i].cnumber)
+    return render_template("availablebooks.html")
+    
+     
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html')
+ 
+ 
+@app.route('/login', methods = ['POST', 'GET'])
 def login():
+    if current_user.is_authenticated:
+        return redirect('/profile')
+     
+    if request.method == 'POST':
+        email = request.form['email']
+        user = UserModel.query.filter_by(email = email).first()
+        if user is not None and user.check_password(request.form['password']):
+            login_user(user)
+            return redirect('/profile')
+     
     return render_template('login.html')
+ 
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if current_user.is_authenticated:
+        return redirect('/profile')
+     
+    if request.method == 'POST':
+        email = request.form['email']
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        contactnumber = request.form['contactnumber']
+        add1 = request.form['add1']
+        add2 = request.form['add2']
+        add3 = request.form['add3']
+        password = request.form['password']
+ 
+        if UserModel.query.filter_by(email=email).first():
+            return ('Email already Present')
+             
+        user = UserModel(email=email, firstname=firstname, lastname=lastname, contactnumber=contactnumber, add1=add1, add2=add2, add3=add3)
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
+        return redirect('/login')
+    return render_template('signup.html')
+ 
+ 
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect('/')
 
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-   return render_template('signup.html')
+@app.route('/submit', methods=['POST', 'GET'])
+def submitbooks():
+    if request.method == 'POST':
+        book1 = request.form['book1']
+        name = request.form['name']
+        cnumber = request.form['cnumber']
+        book = BookModel(book1=book1, name=name, cnumber=cnumber)
+        db.session.add(book)
+        db.session.commit()
+        return redirect('/available')
+    return render_template("submitbooks.html")
+
 if __name__ == '__main__':
-   app.run(debug=True)
+ app.run(debug=True)

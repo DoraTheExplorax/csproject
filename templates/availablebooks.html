@@ -1,0 +1,75 @@
+<html>
+    <header>
+        <link href="https://fonts.googleapis.com/css?family=Product+Sans&display=swap" rel="stylesheet">
+
+        <style>
+     body{ 
+	overflow:hidden;
+    margin: 0;
+}
+.e2_7 { 
+	background-color:rgba(240.12499898672104, 92.04791754484177, 92.04791754484177, 1);
+	
+	width:1920px;
+	height:960px;
+	position:absolute;
+}
+.e9_51 { 
+	color:rgba(255, 255, 255, 1);
+	width:814px;
+	height:157px;
+	position:absolute;
+	left:553px;
+	top:35px;
+	font-family:Product Sans;
+	text-align:center;
+	font-size:72px;
+	letter-spacing:0;
+	line-height:px;
+}
+
+
+        </style>
+        <style>
+            .grid-container {
+              display: grid;
+              grid-template-columns: auto auto auto;
+              background-color: #2196F3;
+              padding: 10px;           
+            }
+            
+            .grid-item {
+              background-color: none;
+              border: 4px solid rgba(255, 255, 255, 0.8);
+              padding: 20px;
+              font-size: 30px;
+              text-align: center;
+              position:relative;
+              font-family:Product Sans;    
+              color:rgba(255, 255, 255, 1);     
+            }
+            </style>
+</header>
+<body>
+    <div class=e2_7><span  class="e9_51">Available Books</span></div>
+    <div>  
+<div class="grid-container" style="padding-top: 150px;">
+    <div class="grid-item">{{book1}}</div>
+    <div class="grid-item">{{name}}</div>
+    <div class="grid-item">{{cnumber}}</div>
+</div>
+</div>
+  </div>
+</body>
+<script>
+    var data = data.Length;
+   var html_data = '';
+
+    for(var i = 0;i < data;i++)
+    {
+       html_data += '';
+         }
+
+  document.getElementById("html_div").innerHTML  = html_data ;
+</script>
+</html>
