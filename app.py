@@ -1,7 +1,8 @@
 from flask import Flask,render_template,request,redirect
 from flask_login import login_required, current_user, login_user, logout_user
 from models import UserModel, BookModel, db, load_books,login
- 
+import json 
+
 app = Flask(__name__)
 app.secret_key = 'xyz'
  
@@ -12,7 +13,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 login.init_app(app)
 login.login_view = 'login'
- 
+def to_dict(self):
+    result = {}
+    for key in self.__mapper__.c.keys():
+        if getattr(self, key) is not None:
+            result[key] = str(getattr(self, key))
+        else:
+            result[key] = getattr(self, key)
+    return result
 @app.before_first_request
 def create_all():
     db.create_all()
@@ -24,9 +32,11 @@ def landing():
 @app.route('/available')
 def availablebooks():
     data = load_books()
+    data_dict={}
     for i in range(len(data)):
-        print(data[i].book1, data[i].name, data[i].cnumber)
-    return render_template("availablebooks.html")
+        data_dict[i]=[data[i].book1, data[i].name, data[i].cnumber]
+    print(data_dict)
+    return render_template("availablebooks.html",data=data_dict)
     
      
 @app.route('/profile')
