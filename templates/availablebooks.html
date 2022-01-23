@@ -53,11 +53,11 @@
 <body>
     <div class=e2_7><span  class="e9_51">Available Books</span></div>
     <div>  
-<div class="grid-container" style="padding-top: 150px;">
+<div class="grid-container" style="padding-top: 150px;", id="html_div">
     <!-- <div class="grid-item">{{book1}}</div>
     <div class="grid-item">{{name}}</div>
     <div class="grid-item">{{cnumber}}</div> -->
-    <div id="html_div"></div>
+    
 </div>
 </div>
   </div>
@@ -69,9 +69,8 @@
     for(var book in books)
     {
       for(var i=0;i<books[book].length;i++){
-        html_data += '<div class="grid-item">'+books[book][0]+'</div>';
-        html_data += '<div class="grid-item">'+books[book][1]+'</div>';
-        html_data += '<div class="grid-item">'+books[book][2]+'</div>';
+        html_data += '<div class="grid-item">'+books[book][i]+'</div>';
+
       }
     }
 
